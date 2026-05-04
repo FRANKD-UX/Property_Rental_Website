@@ -1,7 +1,10 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { apiFetch, clearStoredToken, getStoredToken, storeToken } from '../api/client';
 
 interface User {
+  id: number;
   email: string;
+  username: string;
   isAdmin: boolean;
 }
 
@@ -9,40 +12,49 @@ interface AuthContextType {
   user: User | null;
   isLoggedIn: boolean;
   isAdmin: boolean;
-  login: (email: string, password: string) => boolean;
+  isAuthLoading: boolean;
+  login: (email: string, password: string) => Promise<boolean>;
   logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(() => {
-    const stored = localStorage.getItem('user');
-    return stored ? JSON.parse(stored) : null;
-  });
+  const [user, setUser] = useState<User | null>(null);
+  const [isAuthLoading, setIsAuthLoading] = useState(true);
 
   useEffect(() => {
-    if (user) {
-      localStorage.setItem('user', JSON.stringify(user));
-    } else {
-      localStorage.removeItem('user');
+    const token = getStoredToken();
+    if (!token) {
+      setIsAuthLoading(false);
+      return;
     }
-  }, [user]);
 
-  const login = (email: string, password: string): boolean => {
-    // Simple auth - in production, this would be a real API call
-    // Admin credentials: admin@easirent.co.za / admin123
-    if (email === 'admin@easirent.co.za' && password === 'admin123') {
-      setUser({ email, isAdmin: true });
+    apiFetch<User>('/api/auth/me/')
+      .then((data) => setUser(data))
+      .catch(() => {
+        clearStoredToken();
+        setUser(null);
+      })
+      .finally(() => setIsAuthLoading(false));
+  }, []);
+
+  const login = async (email: string, password: string): Promise<boolean> => {
+    try {
+      const response = await apiFetch<{ token: string; user: User }>('/api/auth/login/', {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+      });
+      storeToken(response.token);
+      setUser(response.user);
       return true;
-    } else if (email && password) {
-      setUser({ email, isAdmin: false });
-      return true;
+    } catch {
+      return false;
     }
-    return false;
   };
 
   const logout = () => {
+    clearStoredToken();
     setUser(null);
   };
 
@@ -52,6 +64,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         user,
         isLoggedIn: !!user,
         isAdmin: user?.isAdmin || false,
+        isAuthLoading,
         login,
         logout,
       }}

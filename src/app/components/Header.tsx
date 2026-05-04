@@ -9,13 +9,16 @@ export function Header() {
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [loginError, setLoginError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { user, isLoggedIn, isAdmin, login, logout } = useAuth();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoginError('');
-    const success = login(loginEmail, loginPassword);
+    setIsSubmitting(true);
+    const success = await login(loginEmail, loginPassword);
+    setIsSubmitting(false);
     if (success) {
       setShowLoginModal(false);
       setLoginEmail('');
@@ -225,10 +228,11 @@ export function Header() {
 
               <button
                 type="submit"
-                className="w-full bg-amber-500 text-white py-3 rounded-lg hover:bg-amber-600 transition-colors"
+                className="w-full bg-amber-500 text-white py-3 rounded-lg hover:bg-amber-600 transition-colors disabled:opacity-60"
+                disabled={isSubmitting}
                 style={{ fontWeight: 700 }}
               >
-                Sign In
+                {isSubmitting ? 'Signing In...' : 'Sign In'}
               </button>
 
               <div className="text-center text-sm text-gray-600">

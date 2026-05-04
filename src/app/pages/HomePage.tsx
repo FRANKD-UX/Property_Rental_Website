@@ -6,7 +6,7 @@ import { CTA } from '../components/CTA';
 import { useProperties } from '../context/PropertyContext';
 
 export function HomePage() {
-  const { properties } = useProperties();
+  const { properties, isLoading } = useProperties();
 
   return (
     <>
@@ -19,7 +19,12 @@ export function HomePage() {
       {/* Properties Grid */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {properties.length === 0 ? (
+          {isLoading ? (
+            <div className="text-center py-20">
+              <p className="text-2xl text-gray-900 mb-4" style={{ fontWeight: 700 }}>Loading properties...</p>
+              <p className="text-gray-600">Please wait while we fetch listings.</p>
+            </div>
+          ) : properties.length === 0 ? (
             <div className="text-center py-20">
               <p className="text-2xl text-gray-900 mb-4" style={{ fontWeight: 700 }}>No properties available</p>
               <p className="text-gray-600">Check back soon for new listings!</p>

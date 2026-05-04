@@ -6,11 +6,12 @@ import { Trash2, Edit, Plus, X } from 'lucide-react';
 
 export function AdminPage() {
   const navigate = useNavigate();
-  const { isAdmin, isLoggedIn } = useAuth();
+  const { isAdmin, isLoggedIn, isAuthLoading } = useAuth();
   const { properties, addProperty, updateProperty, deleteProperty } = useProperties();
 
   const [showForm, setShowForm] = useState(false);
-  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
   const [formData, setFormData] = useState({
     title: '',
     location: '',
@@ -23,12 +24,12 @@ export function AdminPage() {
   });
   const [imagePreview, setImagePreview] = useState<string>('');
 
-  if (!isLoggedIn || !isAdmin) {
+  if (!isAuthLoading && (!isLoggedIn || !isAdmin)) {
     navigate('/');
     return null;
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Check if image is uploaded
@@ -37,12 +38,20 @@ export function AdminPage() {
       return;
     }
 
-    if (editingId) {
-      updateProperty(editingId, formData);
-    } else {
-      addProperty(formData);
+    setIsSaving(true);
+    try {
+      if (editingId) {
+        await updateProperty(editingId, formData);
+      } else {
+        await addProperty(formData);
+      }
+      resetForm();
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unable to save property';
+      alert(message);
+    } finally {
+      setIsSaving(false);
     }
-    resetForm();
   };
 
   const handleEdit = (property: Property) => {
@@ -61,9 +70,14 @@ export function AdminPage() {
     setShowForm(true);
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = async (id: number) => {
     if (window.confirm('Are you sure you want to delete this property?')) {
-      deleteProperty(id);
+      try {
+        await deleteProperty(id);
+      } catch (error) {
+        const message = error instanceof Error ? error.message : 'Unable to delete property';
+        alert(message);
+      }
     }
   };
 
@@ -249,10 +263,11 @@ export function AdminPage() {
                 <div className="flex gap-4 pt-4">
                   <button
                     type="submit"
-                    className="flex-1 bg-amber-500 text-white py-3 rounded-lg hover:bg-amber-600 transition-colors"
+                    className="flex-1 bg-amber-500 text-white py-3 rounded-lg hover:bg-amber-600 transition-colors disabled:opacity-60"
+                    disabled={isSaving}
                     style={{ fontWeight: 700 }}
                   >
-                    {editingId ? 'Update Property' : 'Add Property'}
+                    {isSaving ? 'Saving...' : editingId ? 'Update Property' : 'Add Property'}
                   </button>
                   <button
                     type="button"
