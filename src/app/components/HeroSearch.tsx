@@ -1,9 +1,24 @@
 import { Search, MapPin, Home, DollarSign, Bed, SlidersHorizontal } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { useNavigate } from 'react-router';
 import { useState } from 'react';
 
 export function HeroSearch() {
   const [showFilters, setShowFilters] = useState(false);
+  const [searchLocation, setSearchLocation] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    const params = new URLSearchParams();
+    if (searchLocation) params.append('location', searchLocation);
+    navigate(`/properties?${params.toString()}`);
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
 
   return (
     <section className="relative pt-0">
@@ -38,10 +53,17 @@ export function HeroSearch() {
                 <input
                   type="text"
                   placeholder="Search by location, area..."
+                  value={searchLocation}
+                  onChange={(e) => setSearchLocation(e.target.value)}
+                  onKeyPress={handleKeyPress}
                   className="flex-1 text-gray-900 outline-none"
                 />
               </div>
-              <button className="bg-amber-500 text-black px-8 py-4 hover:bg-amber-400 transition-colors flex items-center gap-2" style={{ fontWeight: 700 }}>
+              <button 
+                onClick={handleSearch}
+                className="bg-amber-500 text-black px-8 py-4 hover:bg-amber-400 transition-colors flex items-center gap-2" 
+                style={{ fontWeight: 700 }}
+              >
                 <Search className="w-5 h-5" />
                 Search
               </button>

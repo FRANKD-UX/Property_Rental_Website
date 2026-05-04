@@ -1,7 +1,12 @@
 import { PropertyFilters } from '../components/PropertyFilters';
 import { PropertyGrid } from '../components/PropertyGrid';
+import { useSearchParams } from 'react-router';
+import { useMemo } from 'react';
 
 export function PropertiesPage() {
+  const [searchParams] = useSearchParams();
+  const searchLocation = searchParams.get('location') || '';
+
   const properties = [
     {
       image: 'https://images.unsplash.com/photo-1706808849777-96e0d7be3bb7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxsdXh1cnklMjBtb2Rlcm4lMjBob3VzZSUyMGV4dGVyaW9yfGVufDF8fHx8MTc3NzAyNjQyN3ww&ixlib=rb-4.1.0&q=80&w=1080',
@@ -59,16 +64,31 @@ export function PropertiesPage() {
     }
   ];
 
+  // Filter properties based on search location
+  const filteredProperties = useMemo(() => {
+    if (!searchLocation) return properties;
+    return properties.filter((prop) =>
+      prop.location.toLowerCase().includes(searchLocation.toLowerCase())
+    );
+  }, [searchLocation, properties]);
+
   return (
     <div className="pt-24">
       {/* Property Search & Filter Section */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {searchLocation && (
+            <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <p className="text-gray-700">
+                Showing results for <span style={{ fontWeight: 700 }}>"{searchLocation}"</span>
+              </p>
+            </div>
+          )}
           <PropertyFilters />
         </div>
       </section>
 
-      <PropertyGrid properties={properties} />
+      <PropertyGrid properties={filteredProperties} />
     </div>
   );
 }
