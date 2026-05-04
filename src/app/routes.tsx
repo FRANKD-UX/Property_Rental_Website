@@ -3,6 +3,8 @@ import { RootLayout } from './pages/RootLayout';
 import { HomePage } from './pages/HomePage';
 import { ContactPage } from './pages/ContactPage';
 import { AdminPage } from './pages/AdminPage';
+import { AboutPage } from './pages/AboutPage';
+import { PropertiesPage } from './pages/PropertiesPage';
 
 export const router = createBrowserRouter([
   {
@@ -10,6 +12,8 @@ export const router = createBrowserRouter([
     Component: RootLayout,
     children: [
       { index: true, Component: HomePage },
+      { path: 'properties', Component: PropertiesPage },
+      { path: 'about', Component: AboutPage },
       { path: 'contact', Component: ContactPage },
       { path: 'admin', Component: AdminPage }
     ]

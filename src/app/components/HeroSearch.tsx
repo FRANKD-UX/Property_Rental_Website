@@ -61,7 +61,6 @@ export function HeroSearch() {
 
             <select className="px-4 py-2 rounded-lg bg-white text-gray-900 border-none outline-none" style={{ fontWeight: 700 }}>
               <option>To Rent</option>
-              <option>For Sale</option>
             </select>
 
             <select className="px-4 py-2 rounded-lg bg-white text-gray-900 border-none outline-none">
@@ -120,23 +119,15 @@ export function HeroSearch() {
                   <label className="block text-sm mb-2 text-gray-700" style={{ fontWeight: 700 }}>Area Size</label>
                   <select className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-amber-500">
                     <option>Any Size</option>
-                    <option>0 - 1000 sq ft</option>
-                    <option>1000 - 2000 sq ft</option>
-                    <option>2000 - 3000 sq ft</option>
-                    <option>3000+ sq ft</option>
+                    <option>0 - 100 m²</option>
+                    <option>100 - 200 m²</option>
+                    <option>200 - 300 m²</option>
+                    <option>300+ m²</option>
                   </select>
                 </div>
               </div>
             </div>
           )}
-        </div>
-      </div>
-
-      {/* Discover Section */}
-      <div className="bg-white py-8 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl text-gray-900 mb-2" style={{ fontWeight: 700 }}>Discover all things property</h2>
-          <p className="text-gray-600">Find your perfect rental home with EasiRent</p>
         </div>
       </div>
     </section>

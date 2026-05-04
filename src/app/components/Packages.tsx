@@ -12,6 +12,7 @@ export function Packages() {
         'Tenant payment management'
       ],
       color: 'border-gray-400',
+      metallicBg: 'bg-gradient-to-br from-slate-100 via-gray-200 to-zinc-300',
       popular: false
     },
     {
@@ -25,6 +26,7 @@ export function Packages() {
         'Tenant placement'
       ],
       color: 'border-amber-500',
+      metallicBg: 'bg-gradient-to-br from-amber-100 via-yellow-200 to-amber-300',
       popular: true
     },
     {
@@ -42,6 +44,7 @@ export function Packages() {
         'Full property management'
       ],
       color: 'border-blue-600',
+      metallicBg: 'bg-gradient-to-br from-cyan-50 via-slate-200 to-blue-200',
       popular: false
     }
   ];
@@ -58,8 +61,8 @@ export function Packages() {
           {packages.map((pkg, index) => (
             <div
               key={index}
-              className={`bg-white rounded-xl shadow-lg border-2 ${pkg.color} p-8 relative ${
-                pkg.popular ? 'ring-4 ring-amber-500/20 transform scale-105' : ''
+              className={`${pkg.metallicBg} rounded-xl shadow-lg border-2 ${pkg.color} p-8 relative flex flex-col h-full ${
+                pkg.popular ? 'ring-4 ring-amber-500/20' : ''
               }`}
             >
               {pkg.popular && (
@@ -75,26 +78,26 @@ export function Packages() {
                 <div className="text-5xl text-gray-900 mb-2" style={{ fontWeight: 700 }}>
                   {pkg.price}
                 </div>
-                <p className="text-sm text-gray-600">of rental collection</p>
+                <p className="text-sm text-gray-700">of rental collection</p>
               </div>
 
               <div className="mb-6">
-                <p className="text-sm text-blue-600 italic" style={{ fontWeight: 700 }}>
+                <p className="text-sm text-black italic" style={{ fontWeight: 700 }}>
                   {pkg.description}
                 </p>
               </div>
 
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3 mb-8 flex-1">
                 {pkg.features.map((feature, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">{feature}</span>
+                    <Check className="w-5 h-5 text-black mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-800">{feature}</span>
                   </li>
                 ))}
               </ul>
 
               <button
-                className={`w-full py-3 rounded-lg transition-colors ${
+                className={`w-full py-3 rounded-lg transition-colors mt-auto ${
                   pkg.popular
                     ? 'bg-amber-500 text-black hover:bg-amber-400'
                     : 'bg-gray-900 text-white hover:bg-gray-800'

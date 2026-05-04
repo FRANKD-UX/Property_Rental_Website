@@ -1,4 +1,4 @@
-import { Search, MapPin, DollarSign, Home, Bed, Bath, SlidersHorizontal } from 'lucide-react';
+import { Search, MapPin, Home, Bed, Bath, SlidersHorizontal } from 'lucide-react';
 import { useState } from 'react';
 
 interface PropertyFiltersProps {
@@ -73,19 +73,19 @@ export function PropertyFilters({ onFilterChange }: PropertyFiltersProps) {
         <div>
           <label className="block text-sm mb-2 text-gray-700" style={{ fontWeight: 700 }}>Min Price</label>
           <div className="relative">
-            <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">R</span>
             <select
               value={filters.minPrice}
               onChange={(e) => handleFilterChange('minPrice', e.target.value)}
               className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent appearance-none bg-white"
             >
               <option value="">No Min</option>
-              <option value="2000">$2,000</option>
-              <option value="4000">$4,000</option>
-              <option value="6000">$6,000</option>
-              <option value="8000">$8,000</option>
-              <option value="10000">$10,000</option>
-              <option value="15000">$15,000</option>
+              <option value="5000">R 5,000</option>
+              <option value="10000">R 10,000</option>
+              <option value="15000">R 15,000</option>
+              <option value="20000">R 20,000</option>
+              <option value="30000">R 30,000</option>
+              <option value="50000">R 50,000</option>
             </select>
           </div>
         </div>
@@ -93,19 +93,19 @@ export function PropertyFilters({ onFilterChange }: PropertyFiltersProps) {
         <div>
           <label className="block text-sm mb-2 text-gray-700" style={{ fontWeight: 700 }}>Max Price</label>
           <div className="relative">
-            <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">R</span>
             <select
               value={filters.maxPrice}
               onChange={(e) => handleFilterChange('maxPrice', e.target.value)}
               className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent appearance-none bg-white"
             >
               <option value="">No Max</option>
-              <option value="4000">$4,000</option>
-              <option value="6000">$6,000</option>
-              <option value="8000">$8,000</option>
-              <option value="10000">$10,000</option>
-              <option value="15000">$15,000</option>
-              <option value="20000">$20,000+</option>
+              <option value="10000">R 10,000</option>
+              <option value="15000">R 15,000</option>
+              <option value="20000">R 20,000</option>
+              <option value="30000">R 30,000</option>
+              <option value="50000">R 50,000</option>
+              <option value="80000">R 80,000+</option>
             </select>
           </div>
         </div>

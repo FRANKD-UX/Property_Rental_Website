@@ -36,7 +36,7 @@ export function Header() {
     <>
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
+          <div className="grid grid-cols-[auto_1fr_auto] items-center py-4 gap-4">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
               <Building2 className="w-8 h-8 text-blue-600" />
@@ -47,9 +47,15 @@ export function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-8">
+            <nav className="hidden md:flex items-center justify-center gap-8">
               <Link to="/" className="text-gray-700 hover:text-blue-600 transition-colors" style={{ fontWeight: 700 }}>
                 Rent
+              </Link>
+              <Link to="/properties" className="text-gray-700 hover:text-blue-600 transition-colors" style={{ fontWeight: 700 }}>
+                Properties
+              </Link>
+              <Link to="/about" className="text-gray-700 hover:text-blue-600 transition-colors" style={{ fontWeight: 700 }}>
+                About Us
               </Link>
               <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition-colors" style={{ fontWeight: 700 }}>
                 Contact
@@ -63,7 +69,7 @@ export function Header() {
             </nav>
 
             {/* Right Side - Auth & Mobile Menu */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center justify-end gap-4">
               {/* Desktop Auth */}
               <div className="hidden md:flex items-center gap-4">
                 <button className="px-6 py-2 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors" style={{ fontWeight: 700 }}>
@@ -127,6 +133,12 @@ export function Header() {
             <nav className="md:hidden pb-4 flex flex-col gap-4 border-t border-gray-200 pt-4">
               <Link to="/" className="text-gray-700 hover:text-blue-600 transition-colors" style={{ fontWeight: 700 }} onClick={() => setMobileMenuOpen(false)}>
                 Rent
+              </Link>
+              <Link to="/properties" className="text-gray-700 hover:text-blue-600 transition-colors" style={{ fontWeight: 700 }} onClick={() => setMobileMenuOpen(false)}>
+                Properties
+              </Link>
+              <Link to="/about" className="text-gray-700 hover:text-blue-600 transition-colors" style={{ fontWeight: 700 }} onClick={() => setMobileMenuOpen(false)}>
+                About Us
               </Link>
               <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition-colors" style={{ fontWeight: 700 }} onClick={() => setMobileMenuOpen(false)}>
                 Contact
