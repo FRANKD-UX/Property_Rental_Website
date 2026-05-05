@@ -1,11 +1,13 @@
 import json
 
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, get_user_model
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 
 from .auth import issue_token, require_auth
+
+User = get_user_model()
 
 
 def parse_json(request) -> dict:
@@ -22,12 +24,17 @@ def login_view(request):
     except json.JSONDecodeError:
         return JsonResponse({"error": "Invalid JSON"}, status=400)
 
-    username = payload.get("username") or payload.get("email")
+    username_or_email = payload.get("username") or payload.get("email")
     password = payload.get("password")
-    if not username or not password:
+    if not username_or_email or not password:
         return JsonResponse({"error": "Username/email and password required"}, status=400)
 
-    user = authenticate(request, username=username, password=password)
+    user = authenticate(request, username=username_or_email, password=password)
+    if not user:
+        user_obj = User.objects.filter(email__iexact=username_or_email).first()
+        if user_obj:
+            user = authenticate(request, username=user_obj.get_username(), password=password)
+
     if not user:
         return JsonResponse({"error": "Invalid credentials"}, status=401)
 
@@ -39,7 +46,7 @@ def login_view(request):
                 "id": user.id,
                 "email": user.email,
                 "username": user.get_username(),
-                "is_admin": bool(user.is_staff or user.is_superuser),
+                "isAdmin": bool(user.is_staff or user.is_superuser),
             },
         }
     )
@@ -57,7 +64,7 @@ def me_view(request):
             "id": user.id,
             "email": user.email,
             "username": user.get_username(),
-            "is_admin": bool(user.is_staff or user.is_superuser),
+            "isAdmin": bool(user.is_staff or user.is_superuser),
         }
     )
 

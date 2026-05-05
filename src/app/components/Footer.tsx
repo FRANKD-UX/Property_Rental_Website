@@ -38,16 +38,16 @@ export function Footer() {
           <div>
             <h3 className="text-white mb-4" style={{ fontWeight: 700 }}>Connect With Us</h3>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-amber-500 hover:text-black text-gray-300 transition-colors">
+              <a href="#" className="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-amber-500 hover:text-black text-white transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-amber-500 hover:text-black text-gray-300 transition-colors">
+              <a href="#" className="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-amber-500 hover:text-black text-white transition-colors">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-amber-500 hover:text-black text-gray-300 transition-colors">
+              <a href="#" className="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-amber-500 hover:text-black text-white transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-amber-500 hover:text-black text-gray-300 transition-colors">
+              <a href="#" className="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-amber-500 hover:text-black text-white transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>

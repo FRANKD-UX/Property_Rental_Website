@@ -1,4 +1,5 @@
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import fingerprintDoor from '../../assets/fingerprint-door.jpg';
 
 export function WhyChoose() {
   const reasons = [
@@ -54,6 +55,35 @@ export function WhyChoose() {
                 <p className="text-gray-700 leading-relaxed">{reason.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+
+        <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          <div className="space-y-4">
+            <h3 className="text-2xl text-gray-900" style={{ fontWeight: 700 }}>
+              Door Access Control System
+            </h3>
+            <p className="text-gray-700 leading-relaxed">
+              All main entry doors are fitted with a fingerprint-based access control system to ensure
+              secure and controlled access to the property. These systems are installed directly at the
+              doors and regulate who is permitted to enter the building.
+            </p>
+            <p className="text-gray-700 leading-relaxed">
+              Fingerprint access is managed solely by the property management company, which handles
+              registration, updates, and removals in line with approved access policies. This prevents
+              unauthorized entry and removes the need for physical keys or access cards.
+            </p>
+            <p className="text-gray-700 leading-relaxed">
+              All biometric data is securely handled and used strictly for access control purposes, in
+              accordance with applicable privacy and data protection regulations.
+            </p>
+          </div>
+          <div className="flex items-center">
+            <ImageWithFallback
+              src={fingerprintDoor}
+              alt="Fingerprint-controlled door handle"
+              className="w-full h-72 md:h-80 lg:h-96 object-cover rounded-lg"
+            />
           </div>
         </div>
       </div>

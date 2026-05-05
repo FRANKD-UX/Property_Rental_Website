@@ -59,9 +59,9 @@ WSGI_APPLICATION = "rental_backend.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("POSTGRES_DB", "professional_property_rental"),
-        "USER": os.getenv("POSTGRES_USER", "postgres"),
-        "PASSWORD": os.getenv("POSTGRES_PASSWORD", "postgres"),
+        "NAME": os.getenv("POSTGRES_DB", "appdb"),
+        "USER": os.getenv("POSTGRES_USER", "appuser"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD", "appsecret"),
         "HOST": os.getenv("POSTGRES_HOST", "localhost"),
         "PORT": os.getenv("POSTGRES_PORT", "5432"),
     }
