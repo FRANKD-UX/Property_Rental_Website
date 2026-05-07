@@ -5,6 +5,7 @@ import { ContactPage } from './pages/ContactPage';
 import { AdminPage } from './pages/AdminPage';
 import { AboutPage } from './pages/AboutPage';
 import { PropertiesPage } from './pages/PropertiesPage';
+import { PropertyDetailsPage } from './pages/PropertyDetailsPage';
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +14,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: HomePage },
       { path: 'properties', Component: PropertiesPage },
+      { path: 'properties/:propertyId', Component: PropertyDetailsPage },
       { path: 'about', Component: AboutPage },
       { path: 'contact', Component: ContactPage },
       { path: 'admin', Component: AdminPage }
