@@ -8,7 +8,8 @@ export function PropertyDetailsPage() {
   const { propertyId } = useParams();
   const { properties, isLoading } = useProperties();
   const parsedId = Number(propertyId);
-  const property = properties.find((item) => item.id === parsedId);
+  const hasValidPropertyId = Number.isInteger(parsedId);
+  const property = hasValidPropertyId ? properties.find((item) => item.id === parsedId) : undefined;
 
   if (isLoading) {
     return (
