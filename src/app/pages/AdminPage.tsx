@@ -44,6 +44,16 @@ export function AdminPage() {
     area: '',
     image: '',
     description: '',
+    streetAddress: '',
+    listingNumber: '',
+    propertyType: '',
+    availableDate: '',
+    depositAmount: '',
+    lifestyle: '',
+    garages: '',
+    parking: '',
+    petsAllowed: '',
+    furnished: '',
   });
   const [imagePreview, setImagePreview] = useState<string>('');
 
@@ -62,6 +72,16 @@ export function AdminPage() {
       area: '',
       image: '',
       description: '',
+      streetAddress: '',
+      listingNumber: '',
+      propertyType: '',
+      availableDate: '',
+      depositAmount: '',
+      lifestyle: '',
+      garages: '',
+      parking: '',
+      petsAllowed: '',
+      furnished: '',
     });
     setImagePreview('');
     setEditingId(null);
@@ -103,6 +123,16 @@ export function AdminPage() {
       area: property.area,
       image: property.image,
       description: property.description || '',
+      streetAddress: property.streetAddress || '',
+      listingNumber: property.listingNumber || '',
+      propertyType: property.propertyType || '',
+      availableDate: property.availableDate || '',
+      depositAmount: property.depositAmount || '',
+      lifestyle: property.lifestyle || '',
+      garages: property.garages || '',
+      parking: property.parking || '',
+      petsAllowed: property.petsAllowed || '',
+      furnished: property.furnished || '',
     });
     setImagePreview(property.image);
     setEditingId(property.id);
@@ -640,6 +670,121 @@ export function AdminPage() {
                   className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-blue-400"
                   placeholder="320 m²"
                 />
+              </div>
+
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-gray-700">Street Address</label>
+                  <input
+                    type="text"
+                    value={formData.streetAddress}
+                    onChange={(e) => setFormData({ ...formData, streetAddress: e.target.value })}
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-blue-400"
+                    placeholder="1000 SS CAS-MAR, 548 6th Street, Montana"
+                  />
+                </div>
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-gray-700">Listing Number</label>
+                  <input
+                    type="text"
+                    value={formData.listingNumber}
+                    onChange={(e) => setFormData({ ...formData, listingNumber: e.target.value })}
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-blue-400"
+                    placeholder="117189738"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-gray-700">Property Type</label>
+                  <input
+                    type="text"
+                    value={formData.propertyType}
+                    onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-blue-400"
+                    placeholder="Apartment / Flat"
+                  />
+                </div>
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-gray-700">Available From</label>
+                  <input
+                    type="text"
+                    value={formData.availableDate}
+                    onChange={(e) => setFormData({ ...formData, availableDate: e.target.value })}
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-blue-400"
+                    placeholder="01 June 2026"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-gray-700">Deposit Amount</label>
+                  <input
+                    type="text"
+                    value={formData.depositAmount}
+                    onChange={(e) => setFormData({ ...formData, depositAmount: e.target.value })}
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-blue-400"
+                    placeholder="R 10 500"
+                  />
+                </div>
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-gray-700">Lifestyle</label>
+                  <input
+                    type="text"
+                    value={formData.lifestyle}
+                    onChange={(e) => setFormData({ ...formData, lifestyle: e.target.value })}
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-blue-400"
+                    placeholder="Complex, Estate, Security Complex, Dual Living"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-gray-700">Garages</label>
+                  <input
+                    type="text"
+                    value={formData.garages}
+                    onChange={(e) => setFormData({ ...formData, garages: e.target.value })}
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-blue-400"
+                    placeholder="1"
+                  />
+                </div>
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-gray-700">Parking</label>
+                  <input
+                    type="text"
+                    value={formData.parking}
+                    onChange={(e) => setFormData({ ...formData, parking: e.target.value })}
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-blue-400"
+                    placeholder="1"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-gray-700">Pets Allowed</label>
+                  <input
+                    type="text"
+                    value={formData.petsAllowed}
+                    onChange={(e) => setFormData({ ...formData, petsAllowed: e.target.value })}
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-blue-400"
+                    placeholder="No"
+                  />
+                </div>
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-gray-700">Furnished</label>
+                  <input
+                    type="text"
+                    value={formData.furnished}
+                    onChange={(e) => setFormData({ ...formData, furnished: e.target.value })}
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-blue-400"
+                    placeholder="No"
+                  />
+                </div>
               </div>
 
               <div>

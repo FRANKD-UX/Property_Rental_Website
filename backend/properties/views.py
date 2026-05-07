@@ -22,6 +22,16 @@ def serialize_property(property_obj: Property) -> dict:
         "area": property_obj.area,
         "image_base64": property_obj.image_base64,
         "description": property_obj.description,
+        "street_address": property_obj.street_address,
+        "listing_number": property_obj.listing_number,
+        "property_type": property_obj.property_type,
+        "available_date": property_obj.available_date,
+        "deposit_amount": property_obj.deposit_amount,
+        "lifestyle": property_obj.lifestyle,
+        "garages": property_obj.garages,
+        "parking": property_obj.parking,
+        "pets_allowed": property_obj.pets_allowed,
+        "furnished": property_obj.furnished,
         "created_at": property_obj.created_at.isoformat(),
         "updated_at": property_obj.updated_at.isoformat(),
     }
@@ -61,6 +71,16 @@ def property_collection(request):
         area=payload["area"],
         image_base64=payload["image_base64"],
         description=payload.get("description", ""),
+        street_address=payload.get("street_address", ""),
+        listing_number=payload.get("listing_number", ""),
+        property_type=payload.get("property_type", ""),
+        available_date=payload.get("available_date", ""),
+        deposit_amount=payload.get("deposit_amount", ""),
+        lifestyle=payload.get("lifestyle", ""),
+        garages=payload.get("garages", ""),
+        parking=payload.get("parking", ""),
+        pets_allowed=payload.get("pets_allowed", ""),
+        furnished=payload.get("furnished", ""),
     )
     return JsonResponse(serialize_property(property_obj), status=201)
 
@@ -88,9 +108,27 @@ def property_detail(request, property_id: int):
         payload = parse_json(request)
     except json.JSONDecodeError:
         return JsonResponse({"error": "Invalid JSON"}, status=400)
-    for field in ["title", "location", "price", "bedrooms", "bathrooms", "area", "image_base64", "description"]:
+    for field in [
+        "title",
+        "location",
+        "price",
+        "bedrooms",
+        "bathrooms",
+        "area",
+        "image_base64",
+        "description",
+        "street_address",
+        "listing_number",
+        "property_type",
+        "available_date",
+        "deposit_amount",
+        "lifestyle",
+        "garages",
+        "parking",
+        "pets_allowed",
+        "furnished",
+    ]:
         if field in payload:
             setattr(property_obj, field, payload[field])
     property_obj.save()
     return JsonResponse(serialize_property(property_obj))
-

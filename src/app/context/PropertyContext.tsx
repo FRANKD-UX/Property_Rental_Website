@@ -11,6 +11,16 @@ export interface Property {
   bathrooms: number;
   area: string;
   description?: string;
+  streetAddress?: string;
+  listingNumber?: string;
+  propertyType?: string;
+  availableDate?: string;
+  depositAmount?: string;
+  lifestyle?: string;
+  garages?: string;
+  parking?: string;
+  petsAllowed?: string;
+  furnished?: string;
 }
 
 interface ApiProperty {
@@ -23,6 +33,16 @@ interface ApiProperty {
   area: string;
   image_base64: string;
   description?: string;
+  street_address?: string;
+  listing_number?: string;
+  property_type?: string;
+  available_date?: string;
+  deposit_amount?: string;
+  lifestyle?: string;
+  garages?: string;
+  parking?: string;
+  pets_allowed?: string;
+  furnished?: string;
 }
 
 interface PropertyContextType {
@@ -49,6 +69,16 @@ export function PropertyProvider({ children }: { children: React.ReactNode }) {
     bathrooms: property.bathrooms,
     area: property.area,
     description: property.description,
+    streetAddress: property.street_address,
+    listingNumber: property.listing_number,
+    propertyType: property.property_type,
+    availableDate: property.available_date,
+    depositAmount: property.deposit_amount,
+    lifestyle: property.lifestyle,
+    garages: property.garages,
+    parking: property.parking,
+    petsAllowed: property.pets_allowed,
+    furnished: property.furnished,
   });
 
   useEffect(() => {
@@ -68,6 +98,16 @@ export function PropertyProvider({ children }: { children: React.ReactNode }) {
       area: property.area,
       image_base64: property.image,
       description: property.description || '',
+      street_address: property.streetAddress || '',
+      listing_number: property.listingNumber || '',
+      property_type: property.propertyType || '',
+      available_date: property.availableDate || '',
+      deposit_amount: property.depositAmount || '',
+      lifestyle: property.lifestyle || '',
+      garages: property.garages || '',
+      parking: property.parking || '',
+      pets_allowed: property.petsAllowed || '',
+      furnished: property.furnished || '',
     };
     const created = await apiFetch<ApiProperty>('/api/properties/', {
       method: 'POST',
@@ -86,6 +126,16 @@ export function PropertyProvider({ children }: { children: React.ReactNode }) {
     if (updates.area !== undefined) payload.area = updates.area;
     if (updates.image !== undefined) payload.image_base64 = updates.image;
     if (updates.description !== undefined) payload.description = updates.description;
+    if (updates.streetAddress !== undefined) payload.street_address = updates.streetAddress;
+    if (updates.listingNumber !== undefined) payload.listing_number = updates.listingNumber;
+    if (updates.propertyType !== undefined) payload.property_type = updates.propertyType;
+    if (updates.availableDate !== undefined) payload.available_date = updates.availableDate;
+    if (updates.depositAmount !== undefined) payload.deposit_amount = updates.depositAmount;
+    if (updates.lifestyle !== undefined) payload.lifestyle = updates.lifestyle;
+    if (updates.garages !== undefined) payload.garages = updates.garages;
+    if (updates.parking !== undefined) payload.parking = updates.parking;
+    if (updates.petsAllowed !== undefined) payload.pets_allowed = updates.petsAllowed;
+    if (updates.furnished !== undefined) payload.furnished = updates.furnished;
 
     const updated = await apiFetch<ApiProperty>(`/api/properties/${id}/`, {
       method: 'PATCH',
