@@ -13,6 +13,8 @@ interface PropertyCardProps {
   area: string;
 }
 
+const formatArea = (area: string) => (area.toLowerCase().includes('m²') ? area : `${area} m²`);
+
 export function PropertyCard({ id, image, title, location, price, bedrooms, bathrooms, area }: PropertyCardProps) {
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
@@ -45,7 +47,7 @@ export function PropertyCard({ id, image, title, location, price, bedrooms, bath
           </div>
           <div className="flex items-center gap-2">
             <Maximize className="w-5 h-5" />
-            <span>{area}</span>
+            <span>{formatArea(area)}</span>
           </div>
         </div>
 

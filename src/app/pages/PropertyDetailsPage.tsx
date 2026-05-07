@@ -3,6 +3,8 @@ import { Link, useParams } from 'react-router';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { useProperties } from '../context/PropertyContext';
 
+const formatArea = (area: string) => (area.toLowerCase().includes('m²') ? area : `${area} m²`);
+
 export function PropertyDetailsPage() {
   const { propertyId } = useParams();
   const { properties, isLoading } = useProperties();
@@ -78,7 +80,7 @@ export function PropertyDetailsPage() {
                 </div>
                 <div className="flex items-center gap-2 text-gray-700">
                   <Maximize className="w-5 h-5" />
-                  <span>{property.area}</span>
+                  <span>{formatArea(property.area)}</span>
                 </div>
               </div>
 
