@@ -1,6 +1,7 @@
 import { Bed, Bath, Maximize, MapPin } from 'lucide-react';
 import { Link } from 'react-router';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { formatArea } from '../utils/formatArea';
 
 interface PropertyCardProps {
   id: number;
@@ -12,8 +13,6 @@ interface PropertyCardProps {
   bathrooms: number;
   area: string;
 }
-
-const formatArea = (area: string) => (area.toLowerCase().includes('m²') ? area : `${area} m²`);
 
 export function PropertyCard({ id, image, title, location, price, bedrooms, bathrooms, area }: PropertyCardProps) {
   return (

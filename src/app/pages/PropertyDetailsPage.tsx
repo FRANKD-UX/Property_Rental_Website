@@ -2,8 +2,7 @@ import { Bath, Bed, MapPin, Maximize } from 'lucide-react';
 import { Link, useParams } from 'react-router';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { useProperties } from '../context/PropertyContext';
-
-const formatArea = (area: string) => (area.toLowerCase().includes('m²') ? area : `${area} m²`);
+import { formatArea } from '../utils/formatArea';
 
 export function PropertyDetailsPage() {
   const { propertyId } = useParams();
