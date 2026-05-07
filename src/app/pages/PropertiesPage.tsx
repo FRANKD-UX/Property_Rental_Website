@@ -35,7 +35,7 @@ export function PropertiesPage() {
 
       {isLoading ? (
         <section className="py-20 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" role="status" aria-live="polite">
             <p className="text-2xl text-gray-900 mb-4 font-bold">Loading properties...</p>
             <p className="text-gray-600">Please wait while we fetch listings.</p>
           </div>
