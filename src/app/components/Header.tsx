@@ -52,7 +52,7 @@ export function Header() {
                 Rent to Residents
               </Link>
               <Link to="/business-owners" className="text-gray-700 hover:text-blue-600 transition-colors" style={{ fontWeight: 700 }}>
-                Business owners
+                Business Owners
               </Link>
               <Link to="/properties" className="text-gray-700 hover:text-blue-600 transition-colors" style={{ fontWeight: 700 }}>
                 Properties
@@ -138,7 +138,7 @@ export function Header() {
                 Rent to Residents
               </Link>
               <Link to="/business-owners" className="text-gray-700 hover:text-blue-600 transition-colors" style={{ fontWeight: 700 }} onClick={() => setMobileMenuOpen(false)}>
-                Business owners
+                Business Owners
               </Link>
               <Link to="/properties" className="text-gray-700 hover:text-blue-600 transition-colors" style={{ fontWeight: 700 }} onClick={() => setMobileMenuOpen(false)}>
                 Properties
