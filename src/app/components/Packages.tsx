@@ -1,4 +1,5 @@
 import { Check } from 'lucide-react';
+import { Link } from 'react-router';
 
 export function Packages() {
   const packages = [
@@ -96,7 +97,8 @@ export function Packages() {
                 ))}
               </ul>
 
-              <button
+              <Link
+                to="/contact#contact"
                 className={`w-full py-3 rounded-lg transition-colors mt-auto ${
                   pkg.popular
                     ? 'bg-amber-500 text-black hover:bg-amber-400'
@@ -105,7 +107,7 @@ export function Packages() {
                 style={{ fontWeight: 700 }}
               >
                 Choose {pkg.name.split(' ')[0]}
-              </button>
+              </Link>
             </div>
           ))}
         </div>

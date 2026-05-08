@@ -75,9 +75,9 @@ export function Header() {
             <div className="flex items-center justify-end gap-4">
               {/* Desktop Auth */}
               <div className="hidden md:flex items-center gap-4">
-                <button className="px-6 py-2 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors" style={{ fontWeight: 700 }}>
+                <Link to="/contact#contact" className="px-6 py-2 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors" style={{ fontWeight: 700 }}>
                   List Property
-                </button>
+                </Link>
 
                 {isLoggedIn ? (
                   <>
@@ -155,9 +155,14 @@ export function Header() {
                   Admin Dashboard
                 </Link>
               )}
-              <button className="px-6 py-2 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors text-center" style={{ fontWeight: 700 }}>
+              <Link
+                to="/contact#contact"
+                className="px-6 py-2 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors text-center"
+                style={{ fontWeight: 700 }}
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 List Property
-              </button>
+              </Link>
               {isLoggedIn ? (
                 <button
                   onClick={handleLogout}
