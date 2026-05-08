@@ -155,7 +155,12 @@ export function Header() {
                   Admin Dashboard
                 </Link>
               )}
-              <Link to="/contact#contact" className="px-6 py-2 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors text-center" style={{ fontWeight: 700 }} onClick={() => setMobileMenuOpen(false)}>
+              <Link
+                to="/contact#contact"
+                className="px-6 py-2 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors text-center"
+                style={{ fontWeight: 700 }}
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 List Property
               </Link>
               {isLoggedIn ? (
