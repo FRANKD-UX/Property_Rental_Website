@@ -35,14 +35,6 @@ export function HeroSearch() {
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-5xl md:text-6xl mb-4" style={{ fontWeight: 700 }}>Effortless Property Management.<br />Maximum Returns.</h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-200">Let Easirent handle your rentals while you enjoy the income — stress-free.</p>
-          <div className="flex gap-4 justify-center mb-8">
-            <button className="bg-amber-500 text-black px-8 py-3 rounded-lg hover:bg-amber-400 transition-colors" style={{ fontWeight: 700 }}>
-              Get Started
-            </button>
-            <button className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors border-2 border-blue-500" style={{ fontWeight: 700 }}>
-              View Packages
-            </button>
-          </div>
           <p className="text-sm text-gray-300 italic">Powered by the Easirent Smart Collection System</p>
 
           {/* Main Search Bar */}

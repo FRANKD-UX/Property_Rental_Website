@@ -1,6 +1,6 @@
 export function ContactPage() {
   return (
-    <div className="pt-24 pb-20 bg-gray-50 min-h-screen">
+    <div id="contact" className="pt-24 pb-20 bg-gray-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-lg shadow-sm">
           <div className="border-b border-gray-200 px-8 py-6">

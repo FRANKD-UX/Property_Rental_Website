@@ -95,7 +95,7 @@ export function BusinessOwnersPage() {
             </div>
 
             <Link
-              to="/contact"
+              to="/contact#contact"
               className="inline-flex justify-center items-center mt-8 px-6 py-3 rounded-lg bg-amber-500 text-white hover:bg-amber-600 transition-colors"
               style={{ fontWeight: 700 }}
             >
@@ -129,7 +129,7 @@ export function BusinessOwnersPage() {
             Turn your property portfolio into a streamlined, profitable operation without the stress.
           </h2>
           <Link
-            to="/contact"
+            to="/contact#contact"
             className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-amber-500 text-white hover:bg-amber-600 transition-colors"
             style={{ fontWeight: 700 }}
           >
