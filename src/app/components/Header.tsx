@@ -49,7 +49,10 @@ export function Header() {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center justify-center gap-8">
               <Link to="/" className="text-gray-700 hover:text-blue-600 transition-colors" style={{ fontWeight: 700 }}>
-                Rent
+                Rent to Residents
+              </Link>
+              <Link to="/business-owners" className="text-gray-700 hover:text-blue-600 transition-colors" style={{ fontWeight: 700 }}>
+                Business owners
               </Link>
               <Link to="/properties" className="text-gray-700 hover:text-blue-600 transition-colors" style={{ fontWeight: 700 }}>
                 Properties
@@ -132,7 +135,10 @@ export function Header() {
           {mobileMenuOpen && (
             <nav className="md:hidden pb-4 flex flex-col gap-4 border-t border-gray-200 pt-4">
               <Link to="/" className="text-gray-700 hover:text-blue-600 transition-colors" style={{ fontWeight: 700 }} onClick={() => setMobileMenuOpen(false)}>
-                Rent
+                Rent to Residents
+              </Link>
+              <Link to="/business-owners" className="text-gray-700 hover:text-blue-600 transition-colors" style={{ fontWeight: 700 }} onClick={() => setMobileMenuOpen(false)}>
+                Business owners
               </Link>
               <Link to="/properties" className="text-gray-700 hover:text-blue-600 transition-colors" style={{ fontWeight: 700 }} onClick={() => setMobileMenuOpen(false)}>
                 Properties
