@@ -27,7 +27,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-white mb-4" style={{ fontWeight: 700 }}>Services</h3>
+            <h3 className="text-white mb-4" style={{ fontWeight: 700 }}>Navigation</h3>
             <ul className="space-y-2 text-sm">
               <li><Link to="/" className="text-gray-300 hover:text-amber-400 transition-colors">Rent to Residents</Link></li>
               <li><Link to="/business-owners" className="text-gray-300 hover:text-amber-400 transition-colors">Business Owners</Link></li>
