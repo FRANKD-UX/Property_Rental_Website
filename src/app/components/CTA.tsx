@@ -1,3 +1,5 @@
+import { Link } from 'react-router';
+
 export function CTA() {
   return (
     <section className="py-20 bg-white border-t border-gray-200">
@@ -8,9 +10,9 @@ export function CTA() {
         <p className="text-xl text-gray-600 mb-8">
           Start earning maximum returns with minimum effort
         </p>
-        <button className="bg-amber-500 text-black px-12 py-4 rounded-lg hover:bg-amber-400 transition-colors text-lg" style={{ fontWeight: 700 }}>
+        <Link to="/contact" className="inline-block bg-amber-500 text-black px-12 py-4 rounded-lg hover:bg-amber-400 transition-colors text-lg" style={{ fontWeight: 700 }}>
           Request a Call Back
-        </button>
+        </Link>
       </div>
     </section>
   );
