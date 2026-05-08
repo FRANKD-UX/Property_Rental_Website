@@ -99,7 +99,7 @@ export function Packages() {
 
               <Link
                 to="/contact#contact"
-                className={`w-full py-3 rounded-lg transition-colors mt-auto ${
+                className={`mt-auto flex w-full items-center justify-center rounded-lg py-3 text-center transition-colors ${
                   pkg.popular
                     ? 'bg-amber-500 text-black hover:bg-amber-400'
                     : 'bg-gray-900 text-white hover:bg-gray-800'
