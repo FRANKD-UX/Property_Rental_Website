@@ -1,4 +1,5 @@
 import { Building2, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Link } from 'react-router';
 
 export function Footer() {
   return (
@@ -26,12 +27,13 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-white mb-4" style={{ fontWeight: 700 }}>Services</h3>
+            <h3 className="text-white mb-4" style={{ fontWeight: 700 }}>Navigation</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-gray-300 hover:text-amber-400 transition-colors">Residential Rentals</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-amber-400 transition-colors">Commercial Spaces</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-amber-400 transition-colors">Property Management</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-amber-400 transition-colors">Tenant Services</a></li>
+              <li><Link to="/" className="text-gray-300 hover:text-amber-400 transition-colors">Rent to Residents</Link></li>
+              <li><Link to="/business-owners" className="text-gray-300 hover:text-amber-400 transition-colors">Business Owners</Link></li>
+              <li><Link to="/properties" className="text-gray-300 hover:text-amber-400 transition-colors">Properties</Link></li>
+              <li><Link to="/about" className="text-gray-300 hover:text-amber-400 transition-colors">About Us</Link></li>
+              <li><Link to="/contact" className="text-gray-300 hover:text-amber-400 transition-colors">Contact</Link></li>
             </ul>
           </div>
 
