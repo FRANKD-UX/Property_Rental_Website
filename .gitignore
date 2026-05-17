@@ -1,3 +1,7 @@
 node_modules/
 backend/**/__pycache__/
 backend/**/*.pyc
+backend/media/*
+!backend/media/.gitkeep
+!backend/media/property-images/
+!backend/media/property-images/.gitkeep

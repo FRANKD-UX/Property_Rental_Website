@@ -31,7 +31,10 @@ interface ApiProperty {
   bedrooms: number;
   bathrooms: number;
   area: string;
-  image_base64: string;
+  image?: string;
+  image_url?: string;
+  image_base64?: string;
+  image_data?: string;
   description?: string;
   street_address?: string;
   listing_number?: string;
@@ -61,7 +64,7 @@ export function PropertyProvider({ children }: { children: React.ReactNode }) {
 
   const mapApiProperty = (property: ApiProperty): Property => ({
     id: property.id,
-    image: property.image_base64,
+    image: property.image_url || property.image_base64 || property.image || '',
     title: property.title,
     location: property.location,
     price: property.price,
@@ -96,7 +99,7 @@ export function PropertyProvider({ children }: { children: React.ReactNode }) {
       bedrooms: property.bedrooms,
       bathrooms: property.bathrooms,
       area: property.area,
-      image_base64: property.image,
+      image_data: property.image,
       description: property.description || '',
       street_address: property.streetAddress || '',
       listing_number: property.listingNumber || '',
@@ -124,7 +127,7 @@ export function PropertyProvider({ children }: { children: React.ReactNode }) {
     if (updates.bedrooms !== undefined) payload.bedrooms = updates.bedrooms;
     if (updates.bathrooms !== undefined) payload.bathrooms = updates.bathrooms;
     if (updates.area !== undefined) payload.area = updates.area;
-    if (updates.image !== undefined) payload.image_base64 = updates.image;
+    if (updates.image !== undefined) payload.image_data = updates.image;
     if (updates.description !== undefined) payload.description = updates.description;
     if (updates.streetAddress !== undefined) payload.street_address = updates.streetAddress;
     if (updates.listingNumber !== undefined) payload.listing_number = updates.listingNumber;
